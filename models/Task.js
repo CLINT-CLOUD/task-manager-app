@@ -16,6 +16,9 @@ const taskSchema = new mongoose.Schema({
   assignedTo: String,
   createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   createdAt: { type: Date, default: Date.now },
+
+  // ✅ New field for deadline
+  deadline: { type: Date }, 
 });
 
 module.exports = mongoose.model('Task', taskSchema);

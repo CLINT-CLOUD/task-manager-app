@@ -3,9 +3,9 @@ const router = express.Router();
 const authMiddleware = require('../middleware/auth');
 const Task = require('../models/Task');
 
-// ✅ Create a new task (with status normalization)
+// ✅ Create a new task (with status normalization and deadline support)
 router.post('/', authMiddleware, async (req, res) => {
-  let { title, description, status = 'Pending', priority, email } = req.body;
+  let { title, description, status = 'Pending', priority, email, deadline } = req.body;
 
   // Normalize status to Title Case
   status = status
@@ -20,6 +20,7 @@ router.post('/', authMiddleware, async (req, res) => {
       description,
       status,
       priority,
+      deadline, // ✅ New
       assignedTo: email,
       createdBy: req.user.id,
     });
