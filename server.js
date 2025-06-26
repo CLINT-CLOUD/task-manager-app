@@ -21,6 +21,9 @@ mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.error('Mongo error:', err));
 
+app.get('/', (req, res) => {
+res.send('TaskFlow Api is running');
+});
 const PORT = process.env.PORT ;
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
